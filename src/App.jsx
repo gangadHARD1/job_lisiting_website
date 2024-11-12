@@ -6,7 +6,8 @@ import {Route,createBrowserRouter,createRoutesFromElements,RouterProvider
  import MainLayout from './layouts/MainLayout';
 import JobsPage from './pages/JobsPage';
 import ErrorPage from './pages/ErrorPage';
-import Job_expanded from './pages/job_expanded';
+import Job_expanded, {jobLoader} from './pages/job_expanded';
+ 
 {/* index element means its goonna be the home page so nop need ot specify path*/}
 
 
@@ -15,7 +16,7 @@ const router = createBrowserRouter(
     <Route path='/' element= {<MainLayout/>}>
     <Route index element={<HomePage/>} />
     <Route path='/jobs' element={<JobsPage/>}/>
-    <Route path='/jobs/:id' element={<Job_expanded/>}/>   {/* the colon after jobs/ signifies this is dynamic*/}
+    <Route path='/jobs/:id' element={<Job_expanded/>} loader={jobLoader}/>   {/* the colon after jobs/ signifies this is dynamic*/}
     <Route path='*' element={<ErrorPage/>}/>
     </Route>
   )
